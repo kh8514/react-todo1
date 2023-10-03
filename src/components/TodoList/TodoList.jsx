@@ -9,12 +9,21 @@ export default function TodoList() {
   ]);
 
   const handleAdd = (todo) => setTodos([...todos, todo]);
+  const handleUpdate = (update) =>
+    setTodos(todos.map((todo) => (todo.id === update.id ? update : todo)));
+  const handleDelete = (deleted) =>
+    setTodos(todos.filter((todo) => todo.id !== deleted.id));
 
   return (
     <section>
       <ul>
         {todos.map((todo) => (
-          <Todo key={todo.id} todo={todo} />
+          <Todo
+            key={todo.id}
+            todo={todo}
+            onUpdate={handleUpdate}
+            onDelete={handleDelete}
+          />
         ))}
       </ul>
       <AddTodo onAdd={handleAdd} />
