@@ -9,6 +9,7 @@ export default function AddTodo({ onAdd }) {
     if (text.trim().length === 0) return;
     const newTodo = { id: uuidv4(), text, status: "active" };
     onAdd(newTodo);
+    setText("");
   };
   return (
     <form onSubmit={handleSubmit}>
